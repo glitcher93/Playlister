@@ -1,4 +1,6 @@
 import './App.scss';
+import SearchBar from './components/SearchBar';
+import SearchResults from './components/SearchResults';
 
 function App() {
   return (
@@ -7,8 +9,9 @@ function App() {
         <h1 className='header__title'>Play<span className='header__title--highlight'>list</span>er</h1>
       </header>
       <main className='main'>
+        <SearchBar />
         <div className="main__container">
-          {/* SearchBar */}
+          <SearchResults />
           {/* Playlist */}
         </div>
       </main>
