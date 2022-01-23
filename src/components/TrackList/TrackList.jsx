@@ -1,9 +1,16 @@
 import './TrackList.scss';
+import Track from '../Track';
 
-function TrackList() {
+function TrackList({ tracks }) {
     return (
         <div class="trackList">
             {/* <!-- You will add a map method that renders a set of Track components  --> */}
+            {tracks.map(track => {
+                return <Track 
+                        key={track.id}
+                        track={track}
+                        />
+            })}
         </div>
     )
 }
