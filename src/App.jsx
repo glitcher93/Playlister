@@ -13,6 +13,15 @@ function App() {
     id: 1
   }])
 
+  const [playlistName, setPlaylistName] = useState('Yeah')
+
+  const [playlistTracks, setPlaylistTracks] = useState([{
+    name: 'Track 2',
+    artist: 'Lol',
+    album: 'Lol',
+    id: 1
+  }])
+
   return (
     <>
       <header className='header'>
@@ -22,7 +31,10 @@ function App() {
         <SearchBar />
         <div className="main__container">
           <SearchResults searchResults={searchResults} />
-          <Playlist />
+          <Playlist
+          playlistName={playlistName}
+          playlistTracks={playlistTracks} 
+          />
         </div>
       </main>
     </>
