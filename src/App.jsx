@@ -30,6 +30,12 @@ function App() {
     setPlaylistTracks([...playlistTracks, track]);
   }
 
+  const removeTrack = (track) => {
+    let tracks = playlistTracks;
+    tracks = tracks.filter(playlistTrack => playlistTrack.id !== track.id);
+    setPlaylistTracks(tracks);
+  }
+
   return (
     <>
       <header className='header'>
@@ -44,7 +50,8 @@ function App() {
           />
           <Playlist
           playlistName={playlistName}
-          playlistTracks={playlistTracks} 
+          playlistTracks={playlistTracks}
+          onRemove={removeTrack} 
           />
         </div>
       </main>
