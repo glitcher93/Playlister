@@ -1,15 +1,15 @@
 import './TrackList.scss';
 import Track from '../Track';
 
-function TrackList({ tracks, onAdd, isRemoval }) {
+function TrackList({ tracks, onAdd, onRemove, isRemoval }) {
     return (
         <div className="tracklist">
-            {/* <!-- You will add a map method that renders a set of Track components  --> */}
             {tracks.map(track => {
                 return <Track 
                         key={track.id}
                         track={track}
                         onAdd={onAdd}
+                        onRemove={onRemove}
                         isRemoval={isRemoval}
                         />
             })}
