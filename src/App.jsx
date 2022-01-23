@@ -19,8 +19,16 @@ function App() {
     name: 'Track 2',
     artist: 'Lol',
     album: 'Lol',
-    id: 1
+    id: 2
   }])
+
+  const addTrack = (track) => {
+    const foundTrack = playlistTracks.find(savedTrack => savedTrack.id === track.id);
+    if (foundTrack) {
+      return;
+    }
+    setPlaylistTracks([...playlistTracks, track]);
+  }
 
   return (
     <>
@@ -30,7 +38,10 @@ function App() {
       <main className='main'>
         <SearchBar />
         <div className="main__container">
-          <SearchResults searchResults={searchResults} />
+          <SearchResults 
+          searchResults={searchResults} 
+          onAdd={addTrack}
+          />
           <Playlist
           playlistName={playlistName}
           playlistTracks={playlistTracks} 
