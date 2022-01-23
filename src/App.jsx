@@ -1,4 +1,5 @@
 import './App.scss';
+import Playlist from './components/Playlist';
 import SearchBar from './components/SearchBar';
 import SearchResults from './components/SearchResults';
 
@@ -12,7 +13,7 @@ function App() {
         <SearchBar />
         <div className="main__container">
           <SearchResults />
-          {/* Playlist */}
+          <Playlist />
         </div>
       </main>
     </>
