@@ -1,17 +1,26 @@
 import './Track.scss';
 
-function Track({ track, onAdd, isRemoval }) {
+function Track({ track, onAdd, onRemove, isRemoval }) {
 
     const addTrack = () => {
         onAdd(track);
     }
 
+    const removeTrack = () => {
+        onRemove(track);
+    }
+
     const renderButton = () => {
         if (isRemoval) {
-            return <button class="track__button">-</button>
+            return <button 
+                    className="track__button"
+                    onClick={removeTrack}
+                    >
+                        -
+                    </button>
         }
         return <button 
-                class="track__button"
+                className="track__button"
                 onClick={addTrack}
                 >
                     +
