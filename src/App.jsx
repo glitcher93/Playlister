@@ -13,7 +13,7 @@ function App() {
     id: 1
   }])
 
-  const [playlistName, setPlaylistName] = useState('Yeah')
+  const [playlistName, setPlaylistName] = useState('New Playlist')
 
   const [playlistTracks, setPlaylistTracks] = useState([{
     name: 'Track 2',
@@ -36,6 +36,10 @@ function App() {
     setPlaylistTracks(tracks);
   }
 
+  const updatePlaylistName = (name) => {
+    setPlaylistName(name);
+  }
+
   return (
     <>
       <header className='header'>
@@ -51,7 +55,8 @@ function App() {
           <Playlist
           playlistName={playlistName}
           playlistTracks={playlistTracks}
-          onRemove={removeTrack} 
+          onRemove={removeTrack}
+          onNameChange={updatePlaylistName} 
           />
         </div>
       </main>
