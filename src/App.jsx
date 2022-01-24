@@ -40,13 +40,24 @@ function App() {
     setPlaylistName(name);
   }
 
+  const savePlaylist = () => {
+    const trackUris = playlistTracks.map(track => track.uri);
+    console.log('Saved!')
+  }
+
+  const search = (term) => {
+    console.log(term);
+  }
+
   return (
     <>
       <header className='header'>
         <h1 className='header__title'>Play<span className='header__title--highlight'>list</span>er</h1>
       </header>
       <main className='main'>
-        <SearchBar />
+        <SearchBar 
+        onSearch={search}
+        />
         <div className="main__container">
           <SearchResults 
           searchResults={searchResults} 
@@ -56,7 +67,8 @@ function App() {
           playlistName={playlistName}
           playlistTracks={playlistTracks}
           onRemove={removeTrack}
-          onNameChange={updatePlaylistName} 
+          onNameChange={updatePlaylistName}
+          onSave={savePlaylist} 
           />
         </div>
       </main>
