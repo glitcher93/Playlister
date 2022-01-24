@@ -1,7 +1,7 @@
 import './Playlist.scss';
 import TrackList from '../TrackList';
 
-function Playlist({ playlistName, playlistTracks, onRemove, onNameChange }) {
+function Playlist({ playlistName, playlistTracks, onRemove, onNameChange, onSave }) {
 
     const handleNameChange = (event) => {
         onNameChange(event.target.value)
@@ -21,7 +21,10 @@ function Playlist({ playlistName, playlistTracks, onRemove, onNameChange }) {
             onRemove={onRemove}
             isRemoval={true}
             />
-            <button className="playlist__button">
+            <button 
+            className="playlist__button"
+            onClick={onSave}
+            >
                 Save to Spotify
             </button>
         </div>
