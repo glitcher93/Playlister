@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Spotify from './utils/Spotify';
 import './App.scss';
 import Playlist from './components/Playlist';
 import SearchBar from './components/SearchBar';
@@ -6,21 +7,11 @@ import SearchResults from './components/SearchResults';
 
 function App() {
 
-  const [searchResults, setSearchResults] = useState([{
-    name: 'Track 1',
-    artist: 'Lol',
-    album: 'Lol',
-    id: 1
-  }])
+  const [searchResults, setSearchResults] = useState([])
 
   const [playlistName, setPlaylistName] = useState('New Playlist')
 
-  const [playlistTracks, setPlaylistTracks] = useState([{
-    name: 'Track 2',
-    artist: 'Lol',
-    album: 'Lol',
-    id: 2
-  }])
+  const [playlistTracks, setPlaylistTracks] = useState([])
 
   const addTrack = (track) => {
     const foundTrack = playlistTracks.find(savedTrack => savedTrack.id === track.id);
@@ -42,11 +33,15 @@ function App() {
 
   const savePlaylist = () => {
     const trackUris = playlistTracks.map(track => track.uri);
-    console.log('Saved!')
+    Spotify.savePlaylist(playlistName, trackUris).then(() => {
+      setPlaylistName('New Playlist')
+      setPlaylistTracks([]);
+    })
   }
 
   const search = (term) => {
     console.log(term);
+    Spotify.search(term).then(searchResults => setSearchResults(searchResults));
   }
 
   return (
